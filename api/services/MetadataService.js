@@ -37,7 +37,7 @@ module.exports = {
         });      
       }
       writer.setFile(mp3).write(meta, function(err) {
-        if (err) { sails.log.error('MetadataService.js:modify', 'writer.setFile(mp3)', track.name); }
+       // if (err) { sails.log.error('MetadataService.js:modify', 'writer.setFile(mp3)', track.name); }
       });
     }
   }

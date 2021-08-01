@@ -18,13 +18,13 @@
 var fs = require('fs');
 var crypto = require('crypto');
 var guid = require('guid');
-var execSync = require('exec-sync');
+//var execSync = require('exec-sync');
 
 var deleteFolderRecursive = function(path) {
   //console.log(sails.config.params.rootPath + path);
   if( path && fs.existsSync(path) ) {
     try {
-      execSync("rm -r " + sails.config.params.rootPath + path);
+      //execSync("rm -r " + sails.config.params.rootPath + path);
     }
     catch (e) {
       sails.log.error('FsService.js:deleteFolderRecursive', "rm -r " + sails.config.params.rootPath + path, e);

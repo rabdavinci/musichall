@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
   <head>
-    <base href="http://<%- req.host %>/" target="_self">
+    <base href="http://<%- req.host %>:1337/" target="_self">
     <meta charset="utf-8" />
     <title ng-if="!player.nowPlaying.isPlaying"><%- sails.config.params.title %></title>
     <title ng-if="player.nowPlaying.isPlaying">{{player.nowPlaying.name}}</title>

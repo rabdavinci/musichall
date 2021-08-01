@@ -35,18 +35,18 @@ module.exports = {
     Track.find(params).populate('createdBy').exec(function (err, track) {
       if (err) sails.log.error('TrackController.js:welcome', 'Track.find', params, err);
       res.json({
-        id: track[0].id,
-        coverUrl: track[0].coverUrl,
-        name: track[0].name,
-        fileOgg: track[0].fileOgg,
-        duration: track[0].duration,
-        position: 0,
-        progress: 0,
-        numPlays: track[0].numPlays,
-        createdBy: {
-          login: track[0].createdBy.login,
-          avatarUrl: track[0].createdBy.avatarUrl
-        }
+        // id: track[0].id,
+        // coverUrl: track[0].coverUrl,
+        // name: track[0].name,
+        // fileOgg: track[0].fileOgg,
+        // duration: track[0].duration,
+        // position: 0,
+        // progress: 0,
+        // numPlays: track[0].numPlays,
+        // createdBy: {
+        //   login: track[0].createdBy.login,
+        //   avatarUrl: track[0].createdBy.avatarUrl
+        // }
       });
     });
   },
@@ -522,10 +522,10 @@ module.exports = {
     });
   },
 
-  /*id3genres: function (req, res) {
-    Track.fillID3Genres();
-    res.send(200, 'Complete');
-  },*/
+  // id3genres: function (req, res) {
+  //   Track.fillID3Genres();
+  //   res.send(200, 'Complete');
+  // },
 
   update: function (req, res) {
     var id = parseInt(req.param('id'));

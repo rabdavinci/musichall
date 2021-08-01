@@ -1,5 +1,5 @@
 module.exports.params = {
-	rootPath: '/home/inconnect/',
+	rootPath: '/home/gayrat/Desktop/musichall/',
 	title: 'Music Hall',
 	description: 'Музыкальная социальная сеть в TAS-IX',
 	keywords: 'music,tasix,музыка',
@@ -16,6 +16,7 @@ module.exports.params = {
 		byAlbum: 'http://ws.audioscrobbler.com/2.0/?method=album.getinfo'
 	},
 	google: 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&imgsz=large&q=',
+	google_k: 'AIzaSyB1xtWw0IRhWaTpFHBmv_JkIwBzSvI8GUA',
 	plan: {
 		free: 180*60,
 		pro: 360*60

@@ -458,10 +458,11 @@ module.exports = {
   },
 
   getCoverLastFMByAlbum: function (artist, album, opts, cb) {
-    //console.log('by Album');
+    console.log('by Album');
     if (!artist || !album) cb(false);
     if (typeof artist == 'undefined' || album == 'undefined') cb(false);
     opts.url = sails.config.params.lastFM.byAlbum+'&api_key='+api_key+'&format=json&album='+album+'&artist='+artist;
+    console.log(opts.url);
     request(opts, function (err, res, body) {
       if (!err && res.statusCode == 200) {
         var result = JSON.parse(body.replace(/"#text"/g, '"text"'));
@@ -486,10 +487,15 @@ module.exports = {
   },
 
   getCoverLastFMByTrack: function (track, artist, opts, cb) {
-    //console.log('by Track');
+    console.log('by Track');
     if (!track || !artist) cb(false);
     if (typeof artist == 'undefined' || typeof track == 'undefined') cb(false);
+    track = track.replace(/ *\([^)]*\) */g, "");
+    track = track.replace(/\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/g,'')
     opts.url = sails.config.params.lastFM.byTrack+'&api_key='+api_key+'&format=json&track='+track+'&artist='+artist;
+    opts.url = opts.url.replace(/\ /g, "%20")
+
+    console.log(opts.url);
     request(opts, function (err, res, body) {
       if (!err && res.statusCode == 200) {
         var result = JSON.parse(body.replace(/"#text"/g, '"text"'));
@@ -546,11 +552,12 @@ module.exports = {
   getCoverLastFM: function (data, artist, album, track, callback) {
     //var opts = { proxy: 'http://192.168.7.254:8080' };
     var opts = {};
-
     var saveCover = function (body, ext, from, metadata) {
       if (body) {
+        
         var original = data.directory + '/images/original/lastfm_' + from + ext;
         var resized = data.directory + '/images/resized/lastfm_' + from + ext;
+        console.log(original);
         fs.writeFile(original, body, 'binary', function(err) {
           if (err) sails.log.error('Track.js:getCoverLastFM saveCover', 'fs.writeFile', original, err);
           ImageService.resizeGm(original, resized, function () {

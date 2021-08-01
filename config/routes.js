@@ -76,7 +76,7 @@ module.exports.routes = {
   'get /users/*/tracks/*/images/*' : 'FileController.get',
   'get /users/*/playlists/*' : 'FileController.get',
 
-  'get /api/genres/id3genres' : 'TrackController.id3genres',
+//  'get /api/genres/id3genres' : 'TrackController.id3genres',
   'get /api/genre' : 'GenreController.findAll',
   'get /api/genre/search' : 'GenreController.search',
   'get /api/genre/:id' : 'GenreController.find',

@@ -35,6 +35,8 @@ module.exports.cors = {
   // This can be a comma-delimited list of hosts (beginning with http:// or https://)
   // or "*" to allow all domains CORS access.
   origin: '*',
+  allowCredentials: true,
+  allowAnyOriginWithCredentialsUnsafe: true,
 
   // Allow cookies to be shared for CORS requests?
   credentials: true,

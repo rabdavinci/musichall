@@ -32,8 +32,8 @@ var saveAvatar = function (url, path, callback) {
 var createDirectories = function (login, callback) {
   fs.mkdir('users/'+login, function (err) {
     if (err) sails.log.error('passport.js:createDirectories', 'fs.mkdir', 'users/'+login, err);
-    fs.mkdir('users/'+login+'/tracks');
-    fs.mkdir('users/'+login+'/playlists');
+    fs.mkdirSync('users/'+login+'/tracks');
+    fs.mkdirSync('users/'+login+'/playlists');
     callback(true);
   });
 };
@@ -54,7 +54,7 @@ var registration = {
       provider: profile.provider,
       uid: profile.id,
       fullname: profile.displayName,
-      email: profile.emails[0].value,
+     // email: profile.emails[0].value,
       login: profile.username,
       avatarUrl: profile._json.avatar_url
     };
@@ -189,40 +189,40 @@ passport.use(new RememberMeStrategy(
 ));
 
 passport.use(new GoogleStrategy({
-  clientID: '642731279766-3lvug57n1k9pbe24lked5hfthkdifk15.apps.googleusercontent.com',
-  clientSecret: 'bG0edHhoARpBeDRtjqEi4rqQ',
-  callbackURL: 'http://musichall.uz/api/user/google/callback'
+  clientID: '',
+  clientSecret: '',
+  callbackURL: 'https://localhost.uz/api/user/google/callback'
 }, verifyHandler));
 
 passport.use(new GitHubStrategy({
-  clientID: '10663d4949237588def4',
-  clientSecret: '60b8e58559cce46b015b4ccd64add7b0b3b26293',
-  callbackURL: 'http://musichall.uz/api/user/github/callback'
+  clientID: '',
+  clientSecret: '',
+  callbackURL: 'http://localhost:1337/api/user/github/callback'
 }, verifyHandler));
 
 passport.use(new FacebookStrategy({
-  clientID: '348076598708745',
-  clientSecret: 'a6c91b7245a9df297bdb5f2a4f7dd8dd',
+  clientID: '',
+  clientSecret: '',
   callbackURL: 'http://musichall.uz/api/user/facebook/callback',
   profileFields: ['id','name','displayName','picture.type(large)','emails','location']
 }, verifyHandler));
 
 passport.use(new MailruStrategy({
-  clientID: '727712',
-  clientSecret: '8c1193de602b5397984fba4ffc930d53',
-  callbackURL: 'http://musichall.uz/api/user/mailru/callback'
+  clientID: '',
+  clientSecret: '',
+  callbackURL: 'https://chatmusic.ru/api/user/mailru/callback'
 }, verifyHandler));
 
 passport.use(new VkontakteStrategy({
-  clientID: '4668668',
-  clientSecret: 'aVpJgaiQlhJR7tylfX4z',
-  callbackURL: 'http://musichall.uz/api/user/vkontakte/callback',
+  clientID: '',
+  clientSecret: '',
+  callbackURL: 'https://chatmusic.ru/api/user/vkontakte/callback',
   profileFields: ['uid','nickname','displayName','photo_big','country','city']
 }, verifyHandler));
 
 passport.use(new OdnoklassnikiStrategy({
-  clientID: '1123391232',
-  clientPublic: 'CBAIJGPDEBABABABA',
-  clientSecret: '9B83DE16C4D908CF90311A89',
+  clientID: '',
+  clientPublic: '',
+  clientSecret: '',
   callbackURL: 'http://musichall.uz/api/user/odnoklassniki/callback'
 }, verifyHandler));
